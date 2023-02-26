@@ -17,8 +17,7 @@ class BooksRepresenter
     private
 
     def author_name(book)
-        "#{book.author.first_name} #{book.author.last_name}"
-        
+        "#{book.author.first_name} #{book.author.last_name}"     
     end
 
     attr_reader :books
