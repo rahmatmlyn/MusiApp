@@ -4,6 +4,8 @@ describe "Books API", type: :request do
     let(:first_author) { FactoryBot.create(:author, first_name: 'Rahmat', last_name: 'Aja', age: 18)}
     let(:second_author) { FactoryBot.create(:author, first_name: 'Chiko', last_name: 'Hakles', age: 19)} 
     
+
+    # Contoh membuat metode GET / ambil data
     describe "GET /books/" do
 
 
@@ -37,6 +39,7 @@ describe "Books API", type: :request do
         end 
     end
     
+    # Membuat contoh POST / kirim data
     describe 'POST /books' do
         it 'create a new book' do
 
@@ -60,6 +63,7 @@ describe "Books API", type: :request do
         end  
     end
 
+    # Membuat contoh delete
     describe 'DELETE /books/:id' do
         
         let!(:book) {FactoryBot.create(:book, title:'1984', author:first_author)}
