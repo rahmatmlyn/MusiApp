@@ -5,7 +5,7 @@ describe "Books API", type: :request do
     describe "GET /books/" do
         
         before do
-            FactoryBot.create(:book, title:'1984', author:'Rahmat')
+            FactoryBot.create(:book, title:'1984', author:'Mulyana')
             FactoryBot.create(:book, title:'Cara Ceroboh', author:'Chiko')
         end
 
@@ -15,18 +15,21 @@ describe "Books API", type: :request do
     
             expect(response).to have_http_status(:success)
             expect(JSON.parse(response.body).size).to eq(2)
-        end
+        end 
     end
     
     describe 'POST /books' do
-
         it 'create a new book' do
 
             expect{
-                post '/api/v1/books', params: { book: {title: 'Cara belajar', author:'Rahmat' }}
+                post '/api/v1/books', params: { 
+                    book: {title: 'Cara belajar'},
+                    author:{first_name: 'Rahmat', last_name: 'Mulyana', age: '18'} 
+                }
             }.to change {Book.count}. from(0).to(1)
 
             expect(response).to have_http_status(:created)
+            expect(Author.count).to eq(1)
         end
         
     end
