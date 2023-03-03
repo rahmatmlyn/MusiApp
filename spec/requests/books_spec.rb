@@ -37,6 +37,24 @@ describe "Books API", type: :request do
                 ]
             )  
         end 
+
+        it 'return a subset of books based on pagination' do
+            get '/api/v1/books', params: {limit: 1}
+
+            expect(response).to have_http_status(:success)
+            expect(response_body.size).to eq(1)
+            expect(response_body).to eq(
+                [    
+                    {
+                        'id' => 1,
+                        'title' => '1984', 
+                        'author_name' => 'Rahmat Aja',
+                        'author_age' => 18
+                    }
+                ]
+            )
+        end
+
     end
     
     # Membuat contoh POST / kirim data
